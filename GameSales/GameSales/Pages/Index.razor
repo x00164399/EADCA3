@@ -24,8 +24,6 @@
                     //getting the content
                     using (HttpContent httpcontent = respmsg.Content)
                     {
-                        //testing to see if the information is there
-                        Console.WriteLine(listOfGames.Games);
                         //if successfull and there is information, add the information into the list
                         var info = await httpcontent.ReadAsStringAsync();
                         if (info != null){
@@ -43,6 +41,13 @@
         //display error if it cant connect to the api
         catch (Exception e){
             Console.WriteLine(e.Message);
+        }
+    }
+    protected async override Task OnInitializedAsync(){
+        await AddInfo();
+        //printing all games in the console
+        foreach(Game g in listOfGames.Games){
+            Console.WriteLine(g);
         }
     }
 }
