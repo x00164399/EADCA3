@@ -5,6 +5,25 @@
 <h1>Next-Gen Games</h1>
 <p>List Of Games That Are Currently On Sale</p>
 
+<div>
+    <div class="row">
+        @foreach (var Game in listOfGames.Games)
+        {
+            <div class="col-4">
+                <div class="card w-100 h-100">
+                    <img src="@Game.thumb"/>
+                    <div class="card-body">
+                        <h4 class="title">@Game.title</h4>
+                        <p class="card-text">@Game.normalPrice</p>
+                        <p class="card-text">@Game.dealRating</p>
+                    </div>
+                </div>
+           </div>
+        }
+    </div>
+</div>
+
+
 
 @code{
     //connecting to the api and taking information from it
