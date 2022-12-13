@@ -805,7 +805,6 @@ C:\Users\vilja\Desktop\EADCA3\GameSales\GameSales\obj\Debug\net6.0\blazor.boot.j
 C:\Users\vilja\Desktop\EADCA3\GameSales\GameSales\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\vilja\Desktop\EADCA3\GameSales\GameSales\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\vilja\Desktop\EADCA3\GameSales\GameSales\obj\Debug\net6.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-C:\Users\vilja\Desktop\EADCA3\GameSales\GameSales\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\Users\vilja\Desktop\EADCA3\GameSales\GameSales\obj\Debug\net6.0\scopedcss\bundle\GameSales.styles.css
 C:\Users\vilja\Desktop\EADCA3\GameSales\GameSales\obj\Debug\net6.0\scopedcss\projectbundle\GameSales.bundle.scp.css
 C:\Users\vilja\Desktop\EADCA3\GameSales\GameSales\obj\Debug\net6.0\GameSales.csproj.CopyComplete

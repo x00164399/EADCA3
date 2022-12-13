@@ -2,15 +2,10 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: dimgrey;
 }
 
 main[b-19bisue4ts] {
     flex: 1;
-}
-
-.sidebar[b-19bisue4ts] {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
 
 .top-row[b-19bisue4ts] {
