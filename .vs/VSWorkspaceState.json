@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GameSales"
+    "\\GameSales",
+    "\\GameSales\\GameSales",
+    "\\GameSales\\GameSales\\Games",
+    "\\GameSales\\GameSales\\Pages"
   ],
-  "SelectedNode": "\\GameSales\\GameSales.sln",
+  "SelectedNode": "\\GameSales\\GameSales\\Pages\\Index.razor",
   "PreviewInSolutionExplorer": false
 }

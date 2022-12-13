@@ -1,6 +1,48 @@
 ﻿@page "/"
-
+@using GameSales.Games
 <PageTitle>Index</PageTitle>
 
 <h1>Next-Gen Games</h1>
 <p>List Of Games That Are Currently On Sale</p>
+
+
+@code{
+    //connecting to the api and taking information from it
+    //making a list of games
+    GameList listOfGames = new GameList();
+    async Task AddInfo(){
+        //creating a string to hold the url for api
+        string _baseUrl = "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
+        //try connecting to the api
+        try
+        {
+            using (HttpClient httpclient = new HttpClient())
+            {
+                //getting a response from the api
+                using (HttpResponseMessage respmsg = await httpclient.GetAsync(_baseUrl))
+                {
+                    //getting the content
+                    using (HttpContent httpcontent = respmsg.Content)
+                    {
+                        //testing to see if the information is there
+                        Console.WriteLine(listOfGames.Games);
+                        //if successfull and there is information, add the information into the list
+                        var info = await httpcontent.ReadAsStringAsync();
+                        if (info != null){
+                            listOfGames.Games = JsonSerializer.Deserialize<List<Game>>(info);
+                        }
+                        //if there is no information to be gathered display an error
+                        else
+                        {
+                            throw new ArgumentException("No Info.");
+                        }
+                    }
+                }
+            }
+        }
+        //display error if it cant connect to the api
+        catch (Exception e){
+            Console.WriteLine(e.Message);
+        }
+    }
+}
