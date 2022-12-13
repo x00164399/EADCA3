@@ -196,13 +196,13 @@
       "mscorlib.dll": "sha256-MnMyZHtcymf0sLxXeFBbQZVsdNdxT0GXJaa9t3ZdSek=",
       "netstandard.dll": "sha256-+SGdnDhVMiZ9hq0EsYwJ+mcK0odf3bAtXnSKLorGDCs=",
       "System.Private.CoreLib.dll": "sha256-mqfalNg3wC8XHlyA+j5ioNcnc0kt4prNudKdyJoaYaU=",
-      "GameSales.dll": "sha256-XzLAYUNzz8jGKwlA7YwOqV4w5ZpMfFXHfhLmdFg3zTA="
+      "GameSales.dll": "sha256-iqZTB3hNelw6idjg\/T6Ju78duQI+lMBp6+scgcliKqY="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "GameSales.pdb": "sha256-rmKt9NXAHzGkTZZ\/INZcXPyDsyKruLyNP96V7UETVd4="
+      "GameSales.pdb": "sha256-Dp7ZWV4RrS21P3xwGr\/oqIfKVUkoQo4OoZBYxZemkAI="
     },
     "runtime": {
       "dotnet.6.0.9.rcfz31ff8u.js": "sha256-Azk5sbYFVo84h8NpIst9roIPGLH2y8ewQ9SY\/sUHvgs=",
