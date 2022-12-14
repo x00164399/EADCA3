@@ -2,24 +2,23 @@
 @using GameSales.Games
 <PageTitle>Index</PageTitle>
 
-<div class="row">
-    <div class="column">
-        <h1>Discounted Gaming</h1>
-    </div>
-    <div class="column">
-        <p class="webdisc" style="text-align:center">Current Great Deals</p>
-    </div>
-    <div class="column">
-        <form method="get">
-            <div class="input-group">
-                <input id="Search"/>
-                <div class="input-group-apppend">
-                    <button type="submit" class="btn-primary">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<h1>Discounted Gaming</h1>
+<p class="webdisc">Popular Games With Amazing Deals</p>
+<div class="search-box" style="margin:auto">
+    <button class="btn-search"><i class="fas fa-search"></i></button>
+    <input type="text" class="input-search" placeholder="Type to Search...">
 </div>
+@*<div class="column">
+  <form method="get">
+      <div class="input-group">
+          <input @bind="Search"/>
+          <div class="input-group-append">
+              <button type="submit" class="btn-primary" @onlick="AddInfo">Submit</button>
+          </div>
+      </div>
+  </form>
+</div>*@
+
 
 
 <div>
@@ -27,12 +26,12 @@
         @foreach (var Game in listOfGames.Games)
         {
             <div class="col-2">
-                <div class="card gamecard" style="width: 17rem;border-radius: 30px; background-color: #00FFFF">
-                    <img class="card-img-top" style="border-radius: 30px;" src="@Game.thumb" />
+                <div class="card gamecard" style="width: 200; min-height: 300; margin-bottom:3em; border-radius: 30px; padding-bottom: 3em; background-color: #C3073f">
+                    <img class="card-img-top" style="border-radius: 30px;" width="200" max-height="250"  src="@Game.thumb" />
                     <div class="card-body">
-                        <h5 class="title">@Game.title</h5>
-                        <p class="card-text">Original Price: @Game.normalPrice</p>
-                        <p class="card-text">Disccounted Price: @Game.salePrice</p>
+                        <p class="title" style="color:white;">@Game.title</p>
+                        <p class="card-text"style="color:white;">Original Price: @Game.normalPrice</p>
+                        <p class="card-text" style="color:white;">Disccounted Price: @Game.salePrice</p>
                     </div>
                 </div>
            </div>
@@ -41,26 +40,87 @@
 </div>
 
 <style>
-    h1{
-        font-size: 30px;
-        font-weight: 500;
-        background-image: linear-gradient( #FC4445, #FC4444);
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-    }
-    p.webdisc{
-        font-size: 30px;
-        font-weight: 300;
-        background-image: linear-gradient( #FC4445, #FC4444);
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-    }
-    h5.title{
-        text-decoration-color: #Fc4445;
+    .search-box {
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+        padding-bottom: 2em;
     }
 
+    .input-search {
+        height: 50px;
+        width: 50px;
+        border-style: none;
+        padding: 10px;
+        font-size: 18px;
+        letter-spacing: 2px;
+        outline: none;
+        border-radius: 25px;
+        transition: all .5s ease-in-out;
+        background-color: #C3073f;
+        padding-right: 40px;
+        color: #fff;
+    }
+
+    .input-search::placeholder {
+        color: rgba(255,255,255,.5);
+        font-size: 18px;
+        letter-spacing: 2px;
+        font-weight: 100;
+    }
+
+    .btn-search {
+        width: 50px;
+        height: 50px;
+        border-style: none;
+        font-size: 20px;
+        font-weight: bold;
+        outline: none;
+        cursor: pointer;
+        border-radius: 50%;
+        position: absolute;
+        right: 0px;
+        color: #ffffff;
+        background-color: transparent;
+        pointer-events: painted;
+    }
+
+        .btn-search:focus ~ .input-search {
+            width: 300px;
+            border-radius: 0px;
+            background-color: transparent;
+            border-bottom: 1px solid rgba(255,255,255,.5);
+            transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+        }
+
+    .input-search:focus {
+        width: 300px;
+        border-radius: 0px;
+        background-color: transparent;
+        border-bottom: 1px solid rgba(255,255,255,.5);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+    }
+    div.top{
+        margin:auto;
+    }
+    h1{
+        font-size: 70px;
+        font-weight: 600;
+        background-image: linear-gradient(to left, #C3073f, #950740);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        text-align:center;
+    }
+    p.webdisc{
+        text-align:center;
+        font-size: 20px;
+        font-weight: 200;
+        background-image: linear-gradient( #C3073f, #950740);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
     .column {
         float: left;
         width: 33.33%;
@@ -72,7 +132,10 @@
         clear: both;
     }
     card.gamecard{
-        background-color: #3FEEE6;
+        background-color: #C3073f;
+        width:200;
+        height:300;
+        margin-bottom:3em;
     }
 </style>
 
@@ -81,7 +144,7 @@
     async Task AddInfo()
     {
         //creating a string to hold the url for api
-        string _baseUrl = "https://www.cheapshark.com/api/1.0/deals?";
+        string _baseUrl = "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
         //try connecting to the api
         try
         {
@@ -123,14 +186,14 @@
             Console.WriteLine(g);
         }
     }
+    // ----------------------------------------------------------------------------------------------------------- //
     // ** Trying to Implement Search Function ** //
     // ** for some reason wasent able to add users input into a string and attach to the end of the url for api ** //
+    //connecting to the api and taking information from it
     //public string? Search;
-    ////connecting to the api and taking information from it
     ////making a list of games
     //GameList listOfGames = new GameList();
     //async Task AddInfo(){
-
     //    //creating a string to hold the url for api
     //    string _baseUrl = "https://www.cheapshark.com/api/1.0/games?title=";
     //    //try connecting to the api
