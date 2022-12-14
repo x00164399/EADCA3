@@ -20,7 +20,7 @@
         @foreach (var Game in listOfGames.Games)
         {
             <div class="col-2">
-                <div class="card" style="width: 17rem;border-radius: 30px;">
+                <div class="card gamecard" style="width: 17rem;border-radius: 30px; background-color: #00FFFF">
                     <img class="card-img-top" style="border-radius: 30px;" src="@Game.thumb" />
                     <div class="card-body">
                         <h5 class="title">@Game.title</h5>
@@ -38,7 +38,7 @@
     h1{
         font-size: 30px;
         font-weight: 500;
-        background-image: linear-gradient( #A239CA, #4717F6);
+        background-image: linear-gradient( #FC4445, #FC4444);
         color: transparent;
         background-clip: text;
         -webkit-background-clip: text;
@@ -46,10 +46,13 @@
     p.webdisc{
         font-size: 30px;
         font-weight: 300;
-        background-image: linear-gradient( #A239CA, #4717F6);
+        background-image: linear-gradient( #FC4445, #FC4444);
         color: transparent;
         background-clip: text;
         -webkit-background-clip: text;
+    }
+    h5.title{
+        text-decoration-color: #Fc4445;
     }
 
     .column {
@@ -61,6 +64,9 @@
         content: "";
         display: table;
         clear: both;
+    }
+    card.gamecard{
+        background-color: #3FEEE6;
     }
 </style>
 
