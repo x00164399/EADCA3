@@ -12,7 +12,7 @@
     <div class="column">
         <form method="get">
             <div class="input-group">
-                <input class="form-control" id="Search"/>
+                <input id="Search"/>
                 <div class="input-group-apppend">
                     <button type="submit" class="btn-primary">Search</button>
                 </div>
@@ -77,28 +77,26 @@
 </style>
 
 @code{
-    //connecting to the api and taking information from it
-    //making a list of games
     GameList listOfGames = new GameList();
-    async Task AddInfo(){
+    async Task AddInfo()
+    {
         //creating a string to hold the url for api
-        string _baseUrl = "https://www.cheapshark.com/api/1.0/games?title=";
-        string Search = "CallOfDuty";
+        string _baseUrl = "https://www.cheapshark.com/api/1.0/deals?";
         //try connecting to the api
         try
         {
             using (HttpClient httpclient = new HttpClient())
             {
-                string uri = _baseUrl + Search;
                 //getting a response from the api
-                using (HttpResponseMessage respmsg = await httpclient.GetAsync(uri))
+                using (HttpResponseMessage respmsg = await httpclient.GetAsync(_baseUrl))
                 {
                     //getting the content
                     using (HttpContent httpcontent = respmsg.Content)
                     {
                         //if successfull and there is information, add the information into the list
                         var info = await httpcontent.ReadAsStringAsync();
-                        if (info != null){
+                        if (info != null)
+                        {
                             listOfGames.Games = JsonSerializer.Deserialize<List<Game>>(info);
                         }
                         //if there is no information to be gathered display an error
@@ -111,15 +109,68 @@
             }
         }
         //display error if it cant connect to the api
-        catch (Exception e){
+        catch (Exception e)
+        {
             Console.WriteLine(e.Message);
         }
     }
-    protected async override Task OnInitializedAsync(){
+    protected async override Task OnInitializedAsync()
+    {
         await AddInfo();
         //printing all games in the console
-        foreach(Game g in listOfGames.Games){
+        foreach (Game g in listOfGames.Games)
+        {
             Console.WriteLine(g);
         }
     }
+    // ** Trying to Implement Search Function ** //
+    // ** for some reason wasent able to add users input into a string and attach to the end of the url for api ** //
+    //public string? Search;
+    ////connecting to the api and taking information from it
+    ////making a list of games
+    //GameList listOfGames = new GameList();
+    //async Task AddInfo(){
+
+    //    //creating a string to hold the url for api
+    //    string _baseUrl = "https://www.cheapshark.com/api/1.0/games?title=";
+    //    //try connecting to the api
+    //    try
+    //    {
+    //        using (HttpClient httpclient = new HttpClient())
+    //        {
+    //            string uri = _baseUrl + Search;
+    //            //getting a response from the api
+    //            using (HttpResponseMessage respmsg = await httpclient.GetAsync(uri))
+    //            {
+    //                Console.WriteLine(uri);
+    //                Console.WriteLine(Search);
+    //                //getting the content
+    //                using (HttpContent httpcontent = respmsg.Content)
+    //                {
+    //                    //if successfull and there is information, add the information into the list
+    //                    var info = await httpcontent.ReadAsStringAsync();
+    //                    if (info != null){
+    //                        listOfGames.Games = JsonSerializer.Deserialize<List<Game>>(info);
+    //                    }
+    //                    //if there is no information to be gathered display an error
+    //                    else
+    //                    {
+    //                        throw new ArgumentException("No Info.");
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    //display error if it cant connect to the api
+    //    catch (Exception e){
+    //        Console.WriteLine(e.Message);
+    //    }
+    //}
+    //protected async override Task OnInitializedAsync(){
+    //    await AddInfo();
+    //    //printing all games in the console
+    //    foreach(Game g in listOfGames.Games){
+    //        Console.WriteLine(g);
+    //    }
+    //}
 }
