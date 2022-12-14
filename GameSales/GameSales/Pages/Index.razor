@@ -2,20 +2,31 @@
 @using GameSales.Games
 <PageTitle>Index</PageTitle>
 
-<h1>Next-Gen Games</h1>
-<p>List Of Games That Are Currently On Sale</p>
+<div class="row">
+    <div class="column">
+        <h1>Discounted Gaming</h1>
+    </div>
+    <div class="column">
+        <p class="webdisc" style="text-align:center">Current Great Deals</p>
+    </div>
+    <div class="column" style="position:right">
+        <input type="text" placeholder="Search..">
+    </div>
+</div>
+
 
 <div>
     <div class="row">
         @foreach (var Game in listOfGames.Games)
         {
-            <div class="col-4">
-                <div class="card w-100 h-100">
-                    <img src="@Game.thumb"/>
+            <div class="col-2">
+                <div class="card" style="width: 17rem;border-radius: 30px;">
+                    <img class="card-img-top" style="border-radius: 30px;" src="@Game.thumb" />
                     <div class="card-body">
-                        <h4 class="title">@Game.title</h4>
-                        <p class="card-text">@Game.normalPrice</p>
-                        <p class="card-text">@Game.dealRating</p>
+                        <h5 class="title">@Game.title</h5>
+                        <p class="card-text">Original Price: @Game.normalPrice</p>
+                        <p class="card-text">Disccounted Price: @Game.salePrice</p>
+                        <p class="card-text">Rating: @Game.dealRating</p>
                     </div>
                 </div>
            </div>
@@ -23,7 +34,35 @@
     </div>
 </div>
 
+<style>
+    h1{
+        font-size: 30px;
+        font-weight: 500;
+        background-image: linear-gradient( #A239CA, #4717F6);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+    p.webdisc{
+        font-size: 30px;
+        font-weight: 300;
+        background-image: linear-gradient( #A239CA, #4717F6);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
 
+    .column {
+        float: left;
+        width: 33.33%;
+    }
+
+    .columns:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
 
 @code{
     //connecting to the api and taking information from it
