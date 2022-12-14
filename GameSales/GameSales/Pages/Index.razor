@@ -9,8 +9,15 @@
     <div class="column">
         <p class="webdisc" style="text-align:center">Current Great Deals</p>
     </div>
-    <div class="column" style="position:right">
-        <input type="text" placeholder="Search..">
+    <div class="column">
+        <form method="get">
+            <div class="input-group">
+                <input class="form-control" id="Search"/>
+                <div class="input-group-apppend">
+                    <button type="submit" class="btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -26,7 +33,6 @@
                         <h5 class="title">@Game.title</h5>
                         <p class="card-text">Original Price: @Game.normalPrice</p>
                         <p class="card-text">Disccounted Price: @Game.salePrice</p>
-                        <p class="card-text">Rating: @Game.dealRating</p>
                     </div>
                 </div>
            </div>
@@ -76,14 +82,16 @@
     GameList listOfGames = new GameList();
     async Task AddInfo(){
         //creating a string to hold the url for api
-        string _baseUrl = "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
+        string _baseUrl = "https://www.cheapshark.com/api/1.0/games?title=";
+        string Search = "CallOfDuty";
         //try connecting to the api
         try
         {
             using (HttpClient httpclient = new HttpClient())
             {
+                string uri = _baseUrl + Search;
                 //getting a response from the api
-                using (HttpResponseMessage respmsg = await httpclient.GetAsync(_baseUrl))
+                using (HttpResponseMessage respmsg = await httpclient.GetAsync(uri))
                 {
                     //getting the content
                     using (HttpContent httpcontent = respmsg.Content)

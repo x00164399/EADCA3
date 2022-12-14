@@ -27,9 +27,11 @@
         public int lastChange { get; set; }
         public string? dealRating { get; set; }
         public string? thumb { get; set; }
-        public override string ToString()
-        {
-            return $"Game Title: {title}";
-        }
+        
+        //testing to see if connected to the api
+        //public override string ToString()
+        //{
+        //    return $"Game Title: {title}";
+        //}
     } 
 }
